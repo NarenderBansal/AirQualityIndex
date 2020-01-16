@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Air Quality Predictor</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style type="text/css">
+        .auto-style1 {
+            width: 222px;
+        }
+
+        #Miniemperature {
+            width: 320px;
+        }
+
+        #Atmpressure {
+            width: 320px;
+        }
+
+        #humidity {
+            width: 320px;
+        }
+
+        #visibility {
+            width: 320px;
+        }
+
+        #AVgwindspeed {
+            width: 320px;
+        }
+
+        #Maxwindspeed {
+            width: 320px;
+        }
+
+        #MaxTemperature {
+            width: 320px;
+        }
+
+        #AVGTemperature {
+            width: 320px;
+        }
+    </style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Air Quality prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}} "method="post">
+<div>
+        <table style="width: 100%;">
+            <tr>
+                <td class="auto-style1">Avg Temperature:</td>
+                <td>
+                    <input id="AVGTemperature" type="text" name="Average Temperature" placeholder="Please enter the Average Temperature" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">Max Temperature:</td>
+                <td>
+                    <input id="MaxTemperature" type="text" name="Maximum Temperature" placeholder="Please enter the Maximum Temperature" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">MiniTemperature:</td>
+                <td>
+                    <input id="Miniemperature" type="text" name="Minimum Temperature" placeholder="Please enter the Minimum Temperature" required="required" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="auto-style1">Atmospheric Pressure :</td>
+                <td>
+                    <input id="Atmpressure" type="text" name="Atmospheric pressure" placeholder="Please enter the Atmospheric pressure" required="required" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="auto-style1">Humidity:</td>
+                <td>
+                    <input id="humidity" type="text" name="humidity" placeholder="Please enter the humidity" required="required" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="auto-style1">Visibility:</td>
+                <td>
+                    <input id="visibility" type="text" name="visibility" placeholder="Please enter the visibility" required="required" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="auto-style1">Avg Wind Speed:</td>
+                <td>
+                    <input id="AVgwindspeed" type="text" name="AVgwindspeed" placeholder="Please enter the Average Wind Speed" required="required" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="auto-style1">Maxi Wind Speed:</td>
+                <td>
+                    <input id="Maxwindspeed" type="text" name="Maxwindspeed" placeholder="Please enter the Maximum Wind Speed" required="required" />
+                </td>
+            </tr>
+	
+     <tr>
+                <td>
+                           <button type="submit" value="predict">Predict</button>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+    </form>
+
+   <br>
+   <br>
+   <h3>{{ prediction_text }}</h3>
+
+ </div>
+
+
+</body>
+</html>
